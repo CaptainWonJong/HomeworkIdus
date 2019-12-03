@@ -1,4 +1,3 @@
-
 import android.view.View
 import androidx.annotation.LayoutRes
 import com.wonjong.idus.ui.common.IViewHolder
