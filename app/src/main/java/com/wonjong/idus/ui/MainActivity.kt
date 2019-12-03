@@ -19,7 +19,6 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.model = viewModel
-
     }
 
     override fun observeLiveData() {
