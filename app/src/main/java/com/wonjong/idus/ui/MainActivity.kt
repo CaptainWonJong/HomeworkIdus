@@ -6,9 +6,12 @@ import com.wonjong.idus.R
 import com.wonjong.idus.base.BaseActivity
 import com.wonjong.idus.databinding.ActivityMainBinding
 import com.wonjong.idus.util.MyEventObserver
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
+/**
+ * @author CaptainWonJong@gmail.com
+ */
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override val layoutResId: Int
@@ -18,7 +21,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding.model = viewModel
+        binding.model = getViewModel()
     }
 
     override fun observeLiveData() {

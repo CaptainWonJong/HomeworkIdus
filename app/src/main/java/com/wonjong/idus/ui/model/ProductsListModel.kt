@@ -1,19 +1,18 @@
 package com.wonjong.idus.ui.model
 
-import IHolderType
-import com.wonjong.idus.ui.common.IViewHolderModel
+import com.google.gson.annotations.SerializedName
 
+/**
+ * @author CaptainWonJong@gmail.com
+ */
 data class ProductsListModel(
-    val statusCode: Int,
-    val body: List<ListBody>? = arrayListOf()
-) : IViewHolderModel() {
-    override val viewType = IHolderType.ProductsList
-}
-
+    @SerializedName("statusCode") val statusCode: Int,
+    @SerializedName("body") val body: List<ListBody>? = arrayListOf()
+)
 
 data class ListBody(
-    val id: Int,
-    val seller: String? = "",
-    val thumbnail_520: String? = "",
-    val title: String? = ""
+    @SerializedName("id") val id: Int,
+    @SerializedName("seller") val seller: String? = "",
+    @SerializedName("thumbnail_520") val thumbnail_520: String? = "",
+    @SerializedName("title") val title: String? = ""
 )

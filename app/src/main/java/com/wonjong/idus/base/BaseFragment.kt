@@ -3,6 +3,9 @@ package com.wonjong.idus.base
 import com.ctwj.mysampleapp.util.enum.ViewAnimType
 import leakcanary.AppWatcher
 
+/**
+ * @author CaptainWonJong@gmail.com
+ */
 abstract class BaseFragment : androidx.fragment.app.Fragment() {
 
     open fun getViewAnimation(): ViewAnimType {

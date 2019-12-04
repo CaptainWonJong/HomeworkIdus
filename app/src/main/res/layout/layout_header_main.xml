@@ -19,11 +19,11 @@
             android:id="@+id/iv_header_main"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:background="#f00"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:srcCompat="@drawable/common_google_signin_btn_icon_dark"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

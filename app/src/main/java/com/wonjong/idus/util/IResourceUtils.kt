@@ -7,7 +7,9 @@ import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.wonjong.idus.IApplication
 
-
+/**
+ * @author CaptainWonJong@gmail.com
+ */
 object IResourceUtils {
 
     fun getString(app: IApplication, @StringRes resId: Int): String {

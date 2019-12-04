@@ -6,11 +6,14 @@ import androidx.lifecycle.MutableLiveData
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
+/**
+ * @author CaptainWonJong@gmail.com
+ */
 open class BaseViewModel(application: Application) : AndroidViewModel(application) {
 
     private var compositeDisposable = CompositeDisposable()
 
-    protected var isLoading = MutableLiveData<Boolean>()
+    var isLoading = MutableLiveData<Boolean>()
 
     fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)

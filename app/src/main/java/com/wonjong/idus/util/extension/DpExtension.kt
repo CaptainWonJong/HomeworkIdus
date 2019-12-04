@@ -4,6 +4,10 @@ import android.util.DisplayMetrics
 import com.wonjong.idus.IApplication
 import kotlin.math.roundToInt
 
+/**
+ * @author CaptainWonJong@gmail.com
+ */
+
 val Int.dp: Int
     get() {
         return floatDp.roundToInt()

@@ -3,7 +3,9 @@ package com.ctwj.mysampleapp.util
 import android.util.Log
 import com.wonjong.idus.BuildConfig
 
-
+/**
+ * @author CaptainWonJong@gmail.com
+ */
 object ILog {
     private const val TAG = "CaptainWonJong"
 

@@ -5,6 +5,9 @@ import android.view.View
 import androidx.databinding.BindingAdapter
 import com.wonjong.idus.util.extension.floatDp
 
+/**
+ * @author CaptainWonJong@gmail.com
+ */
 
 @BindingAdapter("roundingDp")
 fun View.setRoundingView(radius: Int){
