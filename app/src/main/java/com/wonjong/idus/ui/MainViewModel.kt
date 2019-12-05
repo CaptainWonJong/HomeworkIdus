@@ -3,6 +3,7 @@ package com.wonjong.idus.ui
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.ctwj.mysampleapp.util.ILog
 import com.wonjong.idus.base.BaseViewModel
 import com.wonjong.idus.net.INetworkClient
 import com.wonjong.idus.ui.model.ListBody
@@ -18,21 +19,22 @@ class MainViewModel(private val repo: INetworkClient) : BaseViewModel(applicatio
     val productsList: LiveData<List<ListBody>>
         get() = _productsList
 
-
     private val _tabEvent = MutableLiveData<MyEvent<Int>>()
     val tabEvent: LiveData<MyEvent<Int>> = _tabEvent
 
-    fun onTabClickEvent(eventType: Int) {
-        _tabEvent.value = MyEvent(eventType)
+    private var itemPageCount = 0
 
-        addDisposable(repo.getProductsList(1).with()
+    fun requestProductsList() {
+        addDisposable(repo.getProductsList(itemPageCount).with()
             .doOnSubscribe { isLoading.value = true }
             .doOnSuccess { isLoading.value = false }
             .doOnError { isLoading.value = false }
             .subscribe({
                 _productsList.value = it.body
+                itemPageCount++
             }, {
-
-            }))
+                ILog.e(it.message.toString())
+            })
+        )
     }
 }

@@ -20,28 +20,21 @@
             layout="@layout/layout_header_main"
             app:model="@{model}" />
 
-        <Button
-            android:id="@+id/btn_test"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:onClick="@{() -> model.onTabClickEvent(1)}"
-            app:layout_constraintTop_toBottomOf="@id/layout_header_main" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rc_products_list_main"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:background="#55ff0000"
             android:clipToPadding="false"
             android:orientation="vertical"
-            android:background="#55ff0000"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_header_main"
-            app:layout_constraintBottom_toBottomOf="parent"
-            tools:listitem="@layout/holder_item_products">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            app:layout_constraintVertical_bias="0.0"
+            tools:listitem="@layout/holder_item_products" />
 
         <ProgressBar
             android:layout_width="50dp"
