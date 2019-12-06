@@ -2,6 +2,7 @@ package com.wonjong.idus.util.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.wonjong.idus.base.holder.BaseViewHolder
 
 
 /**
@@ -14,4 +15,9 @@ fun RecyclerView.setBindScrollPosition(position: Int?) {
         return
     }
     layoutManager?.scrollToPosition(position)
+}
+
+@BindingAdapter("setAdapter")
+fun RecyclerView.setAdapter(adapter: RecyclerView.Adapter<BaseViewHolder<*>>) {
+    this.adapter = adapter
 }
