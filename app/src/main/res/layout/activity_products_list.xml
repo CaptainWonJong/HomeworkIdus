@@ -7,13 +7,14 @@
 
         <variable
             name="model"
-            type="com.wonjong.idus.ui.MainViewModel" />
+            type="com.wonjong.idus.ui.ProductsListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".main.MainActivity">
+        android:background="@color/white_00"
+        tools:context=".main.ProductsListActivity">
 
         <include
             android:id="@+id/layout_header_main"
@@ -24,7 +25,7 @@
             android:id="@+id/layout_refresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:onRefreshListener="@{model.onMainRefreshListener}"
+            app:onRefreshListener="@{model.onProductsListRefreshListener}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +47,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0.0"
-                app:addOnScrollListener="@{model.onMainScrollListener}"
+                app:addOnScrollListener="@{model.onProductsListScrollListener}"
                 app:setAdapter="@{model.productsListAdapter}"
                 app:spanCount="2"
                 tools:listitem="@layout/holder_item_products" />

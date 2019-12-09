@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.wonjong.idus.R
 import com.wonjong.idus.base.BaseActivity
-import com.wonjong.idus.databinding.ActivityMainBinding
+import com.wonjong.idus.databinding.ActivityProductsListBinding
 import com.wonjong.idus.util.INTENT_PRODUCT_DETAIL_ID
 import com.wonjong.idus.util.bus.RxBus
 import com.wonjong.idus.util.enum.EventType
@@ -14,12 +14,12 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 /**
  * @author CaptainWonJong@gmail.com
  */
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>() {
+class ProductsListActivity : BaseActivity<ActivityProductsListBinding, ProductsListViewModel>() {
 
     override val layoutResId: Int
-        get() = R.layout.activity_main
+        get() = R.layout.activity_products_list
 
-    override val viewModel: MainViewModel by viewModel()
+    override val viewModel: ProductsListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

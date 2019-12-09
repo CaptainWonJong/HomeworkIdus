@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * @author CaptainWonJong@gmail.com
  */
-class OnMainScrollListener : RecyclerView.OnScrollListener() {
+class OnProductsListScrollListener : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)

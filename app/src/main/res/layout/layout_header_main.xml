@@ -7,12 +7,13 @@
 
         <variable
             name="model"
-            type="com.wonjong.idus.ui.MainViewModel" />
+            type="com.wonjong.idus.ui.ProductsListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="@dimen/title_bar_height"
+        android:background="@color/white_00"
         tools:context=".main.MainActivity">
 
         <ImageView

@@ -9,14 +9,9 @@ import com.wonjong.idus.ui.model.ProductsListBodyModel
 /**
  * @author CaptainWonJong@gmail.com
  */
-class MainProductsListAdapter(
+class ProductsListAdapter(
     private var item: MutableList<ProductsListBodyModel>? = mutableListOf()
 ) : RecyclerView.Adapter<BaseViewHolder<ProductsListBodyModel>>() {
-
-    fun setItem(item: List<ProductsListBodyModel>?) {
-        item?.let { this.item?.addAll(it) }
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -35,6 +30,11 @@ class MainProductsListAdapter(
 
     fun addItem(item: List<ProductsListBodyModel>?) {
         item?.let { this.item?.addAll(it) }
+        notifyDataSetChanged()
+    }
+
+    fun clear() {
+        item?.clear()
         notifyDataSetChanged()
     }
 }

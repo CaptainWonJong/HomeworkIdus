@@ -12,7 +12,7 @@ data class ProductsListModel(
     val statusCode: Int,
 
     @SerializedName("body")
-    val body: List<ProductsListBodyModel>? = arrayListOf()
+    val body: ArrayList<ProductsListBodyModel>? = arrayListOf()
 )
 
 data class ProductsListBodyModel(
