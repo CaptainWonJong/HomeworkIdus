@@ -16,3 +16,11 @@ val myPrefixUrl get() = if (isProd()) {
 fun isProd() : Boolean {
     return BuildConfig.FLAVOR == "prod"
 }
+
+// Intent
+const val INTENT_PRODUCT_DETAIL_ID = "intentProductDetailId"
+
+// Constants
+const val ERORR_INTEGER_ID = -1
+const val ERORR_STRING_ID = ""
+

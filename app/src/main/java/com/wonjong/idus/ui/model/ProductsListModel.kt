@@ -12,12 +12,10 @@ data class ProductsListModel(
     val statusCode: Int,
 
     @SerializedName("body")
-    val body: List<ListBody>? = arrayListOf()
-) : IViewHolderModel() {
-    override val viewType = IHolderType.ProductsListType
-}
+    val body: List<ProductsListBodyModel>? = arrayListOf()
+)
 
-data class ListBody(
+data class ProductsListBodyModel(
     @SerializedName("id")
     val id: Int,
 
@@ -29,4 +27,6 @@ data class ListBody(
 
     @SerializedName("title")
     val title: String? = ""
-)
+) : IViewHolderModel() {
+    override val viewType = IHolderType.ProductsListType
+}

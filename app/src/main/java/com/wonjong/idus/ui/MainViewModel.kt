@@ -6,8 +6,10 @@ import androidx.lifecycle.MutableLiveData
 import com.ctwj.mysampleapp.util.ILog
 import com.wonjong.idus.base.BaseViewModel
 import com.wonjong.idus.net.INetworkClient
-import com.wonjong.idus.ui.model.ListBody
-import com.wonjong.idus.util.MyEvent
+import com.wonjong.idus.ui.adapter.MainProductsListAdapter
+import com.wonjong.idus.ui.listener.OnMainRefreshListener
+import com.wonjong.idus.ui.listener.OnMainScrollListener
+import com.wonjong.idus.ui.model.ProductsListBodyModel
 import com.wonjong.idus.util.extension.with
 
 /**
@@ -15,14 +17,17 @@ import com.wonjong.idus.util.extension.with
  */
 class MainViewModel(private val repo: INetworkClient) : BaseViewModel(application = Application()) {
 
-    private var _productsList = MutableLiveData<List<ListBody>>()
-    val productsList: LiveData<List<ListBody>>
+    private var _productsList = MutableLiveData<List<ProductsListBodyModel>>()
+    val productsList: LiveData<List<ProductsListBodyModel>>
         get() = _productsList
 
-    private val _tabEvent = MutableLiveData<MyEvent<Int>>()
-    val tabEvent: LiveData<MyEvent<Int>> = _tabEvent
+    private var itemPageCount = 1
 
-    private var itemPageCount = 0
+    var productsListAdapter = MainProductsListAdapter()
+
+    var onMainRefreshListener = OnMainRefreshListener()
+
+    var onMainScrollListener = OnMainScrollListener()
 
     fun requestProductsList() {
         addDisposable(repo.getProductsList(itemPageCount).with()
@@ -31,8 +36,11 @@ class MainViewModel(private val repo: INetworkClient) : BaseViewModel(applicatio
             .doOnError { isLoading.value = false }
             .subscribe({
                 _productsList.value = it.body
+                productsListAdapter.addItem(it.body)
+
                 itemPageCount++
             }, {
+                isError.value = Pair(true, null)
                 ILog.e(it.message.toString())
             })
         )

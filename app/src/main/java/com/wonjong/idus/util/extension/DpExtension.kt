@@ -1,7 +1,7 @@
 package com.wonjong.idus.util.extension
 
+import android.content.res.Resources
 import android.util.DisplayMetrics
-import com.wonjong.idus.IApplication
 import kotlin.math.roundToInt
 
 /**
@@ -21,12 +21,12 @@ val Float.dp: Int
 
 val Int.floatDp: Float
     get() {
-        val metrics = IApplication().resources.displayMetrics
+        val metrics = Resources.getSystem().displayMetrics
         return (this * (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT))
     }
 
 val Float.floatDp: Float
     get() {
-        val metrics = IApplication().resources.displayMetrics
+        val metrics = Resources.getSystem().displayMetrics
         return (this * (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT))
     }

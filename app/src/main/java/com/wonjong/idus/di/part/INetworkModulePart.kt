@@ -31,7 +31,7 @@ val retrofitPart = module {
     }
 
     single {
-        OkHttpClient.Builder().apply {
+        OkHttpClient.Builder().run {
             connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
             addInterceptor(HttpLoggingInterceptor().apply {
                 level = HttpLoggingInterceptor.Level.BODY

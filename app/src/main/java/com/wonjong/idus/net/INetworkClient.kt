@@ -14,7 +14,7 @@ interface INetworkClient {
 
     // 리스트를 가져온다.
     @GET("products")
-    fun getProductsList(@Query("pageNo") pageNo: Int): Single<ProductsListModel>
+    fun getProductsList(@Query("page") page: Int): Single<ProductsListModel>
 
     // 상세 정보를 가져온다.
     @GET("products/{productNo}")

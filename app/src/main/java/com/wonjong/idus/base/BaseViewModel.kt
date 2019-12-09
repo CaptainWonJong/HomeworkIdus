@@ -15,6 +15,8 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     var isLoading = MutableLiveData<Boolean>()
 
+    var isError = MutableLiveData<Pair<Boolean, String?>>(Pair(false, null))
+
     fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)
     }

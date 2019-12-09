@@ -7,6 +7,7 @@ import com.wonjong.idus.BuildConfig
  * @author CaptainWonJong@gmail.com
  */
 object ILog {
+    // fixme: 굳이 Timber를 써야할까?
     private const val TAG = "CaptainWonJong"
 
     /** Log Level Error  */
