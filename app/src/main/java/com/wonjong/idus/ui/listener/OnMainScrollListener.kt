@@ -1,6 +1,5 @@
 package com.wonjong.idus.ui.listener
 
-import android.util.Log
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -17,7 +16,7 @@ class OnMainScrollListener : RecyclerView.OnScrollListener() {
         val lastVisible = layoutManager?.findLastCompletelyVisibleItemPosition() ?: 0
 
         if (lastVisible >= totalItemCount - 1) {
-            Log.d("asdasd", "lastVisibled")
+            // TODO: 아래 새로고침 만들어야함
         }
     }
 }
