@@ -1,18 +1,27 @@
-<resources>
-
-    <!-- Idus application theme. -->
+<resources xmlns:tools="http://schemas.android.com/tools">
     <style name="IdusMainTheme" parent="Theme.AppCompat.Light">
         <!-- No Title Bar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
 
-    <!-- Idus application theme. -->
     <style name="IdusFullScreenTheme" parent="Theme.AppCompat.Light">
         <!-- No Title Bar-->
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+
         <!-- Full Screen -->
         <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="CoralPinkButton" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/selector_coral_pink</item>
+        <item name="android:textColor">@color/white_00</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:fontFamily">@font/noto_black</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:stateListAnimator" tools:targetApi="lollipop">@null</item>
     </style>
 </resources>

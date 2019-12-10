@@ -3,4 +3,6 @@
 
     <string name="error_default_msg">에러가 발생하였습니다.</string>
     <string name="error_detail_id">잘못된 id 입니다.</string>
+
+    <string name="do_buy">구매하기</string>
 </resources>
