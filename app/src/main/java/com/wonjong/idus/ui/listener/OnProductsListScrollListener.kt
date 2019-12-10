@@ -2,11 +2,14 @@ package com.wonjong.idus.ui.listener
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.wonjong.idus.base.BaseViewModel
+import com.wonjong.idus.ui.ProductsListViewModel
+import com.wonjong.idus.util.enum.RequestType
 
 /**
  * @author CaptainWonJong@gmail.com
  */
-class OnProductsListScrollListener : RecyclerView.OnScrollListener() {
+class OnProductsListScrollListener(var viewModel: BaseViewModel) : RecyclerView.OnScrollListener() {
 
     override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
         super.onScrolled(recyclerView, dx, dy)
@@ -16,7 +19,11 @@ class OnProductsListScrollListener : RecyclerView.OnScrollListener() {
         val lastVisible = layoutManager?.findLastCompletelyVisibleItemPosition() ?: 0
 
         if (lastVisible >= totalItemCount - 1) {
-            // TODO: 아래 새로고침 만들어야함
+            when(viewModel) {
+                is ProductsListViewModel -> {
+                    (viewModel as ProductsListViewModel).requestProductsList(RequestType.REQUEST_MAIN_LIST_LOAD_MORE)
+                }
+            }
         }
     }
 }

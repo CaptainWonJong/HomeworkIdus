@@ -1,17 +1,18 @@
 package com.wonjong.idus.ui.model
 
 import com.google.gson.annotations.SerializedName
+import com.wonjong.idus.ui.model.base.BaseModel
 
 /**
  * @author CaptainWonJong@gmail.com
  */
 data class ProductDetailModel(
     @SerializedName("statusCode")
-    val statusCode: Int,
+    override val statusCode: Int,
 
     @SerializedName("body")
     val body: ArrayList<DetailBody>? = arrayListOf()
-)
+) : BaseModel()
 
 data class DetailBody(
     @SerializedName("id")

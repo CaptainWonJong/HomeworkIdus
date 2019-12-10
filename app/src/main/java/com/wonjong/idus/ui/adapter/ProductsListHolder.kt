@@ -18,7 +18,6 @@ class ProductsListHolder(itemView: View) : BaseViewHolder<ProductsListBodyModel>
         itemView.tv_title.text = title
         itemView.tv_seller.text = seller
         itemView.iv_thumbnail.setRoundCornerImageUri(thumbnail_520, 4.dp) // 굳이 상수 안빼도 될듯
-
         itemView.cl_container.setOnClickListener {
             RxBus.sendEvent(Pair(EventType.MAIN_LIST_ITEM_CLICK, id))
         }

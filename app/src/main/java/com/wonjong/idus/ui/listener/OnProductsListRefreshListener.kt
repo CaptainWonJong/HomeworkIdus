@@ -1,12 +1,22 @@
 package com.wonjong.idus.ui.listener
 
+import androidx.lifecycle.MutableLiveData
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.wonjong.idus.base.BaseViewModel
+import com.wonjong.idus.ui.ProductsListViewModel
 
 /**
  * @author CaptainWonJong@gmail.com
  */
-class OnProductsListRefreshListener : SwipeRefreshLayout.OnRefreshListener {
+class OnProductsListRefreshListener(var viewModel: BaseViewModel) : SwipeRefreshLayout.OnRefreshListener {
+
+    var isRefresh = MutableLiveData<Boolean>(false)
+
     override fun onRefresh() {
-        // TODO: 전체 새로고침 만들어야함
+        when(viewModel) {
+            is ProductsListViewModel -> {
+                (viewModel as ProductsListViewModel).requestRefreshProductsList()
+            }
+        }
     }
 }

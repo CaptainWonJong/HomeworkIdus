@@ -1,6 +1,6 @@
 package com.wonjong.idus.util
 
-import com.wonjong.idus.BuildConfig
+import androidx.databinding.library.BuildConfig
 
 /**
  * @author CaptainWonJong@gmail.com
@@ -23,3 +23,7 @@ const val INTENT_PRODUCT_DETAIL_ID = "intentProductDetailId"
 const val ERORR_INTEGER_ID = -1
 const val ERORR_STRING_ID = ""
 
+const val RESPONSE_CODE_200 = 200
+const val RESPONSE_CODE_400 = 400
+const val RESPONSE_CODE_404 = 404
+const val RESPONSE_CODE_500 = 500

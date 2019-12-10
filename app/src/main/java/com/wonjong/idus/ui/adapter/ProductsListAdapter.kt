@@ -10,7 +10,7 @@ import com.wonjong.idus.ui.model.ProductsListBodyModel
  * @author CaptainWonJong@gmail.com
  */
 class ProductsListAdapter(
-    private var item: MutableList<ProductsListBodyModel>? = mutableListOf()
+    private var item: ArrayList<ProductsListBodyModel>? = arrayListOf()
 ) : RecyclerView.Adapter<BaseViewHolder<ProductsListBodyModel>>() {
 
     override fun onCreateViewHolder(
@@ -29,11 +29,12 @@ class ProductsListAdapter(
     }
 
     fun addItem(item: List<ProductsListBodyModel>?) {
+        val beforeSize = itemCount
         item?.let { this.item?.addAll(it) }
-        notifyDataSetChanged()
+        notifyItemRangeChanged(beforeSize, itemCount)
     }
 
-    fun clear() {
+    fun clearItem() {
         item?.clear()
         notifyDataSetChanged()
     }

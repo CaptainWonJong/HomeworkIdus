@@ -8,6 +8,7 @@ import com.wonjong.idus.databinding.ActivityProductsListBinding
 import com.wonjong.idus.util.INTENT_PRODUCT_DETAIL_ID
 import com.wonjong.idus.util.bus.RxBus
 import com.wonjong.idus.util.enum.EventType
+import com.wonjong.idus.util.enum.RequestType
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -27,7 +28,7 @@ class ProductsListActivity : BaseActivity<ActivityProductsListBinding, ProductsL
 
         receiveRxBus()
 
-        viewModel.requestProductsList()
+        viewModel.requestProductsList(RequestType.REQUEST_MAIN_LIST_INIT)
     }
 
     override fun observeLiveData() {

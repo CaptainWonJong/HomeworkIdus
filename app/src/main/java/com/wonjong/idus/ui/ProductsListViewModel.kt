@@ -1,48 +1,74 @@
 package com.wonjong.idus.ui
 
 import android.app.Application
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ctwj.mysampleapp.util.ILog
 import com.wonjong.idus.base.BaseViewModel
 import com.wonjong.idus.net.INetworkClient
+import com.wonjong.idus.net.response.ResponseProductsList
 import com.wonjong.idus.ui.adapter.ProductsListAdapter
 import com.wonjong.idus.ui.listener.OnProductsListRefreshListener
 import com.wonjong.idus.ui.listener.OnProductsListScrollListener
 import com.wonjong.idus.ui.model.ProductsListBodyModel
+import com.wonjong.idus.util.enum.RequestType
 import com.wonjong.idus.util.extension.with
 
 /**
  * @author CaptainWonJong@gmail.com
  */
-class ProductsListViewModel(private val repo: INetworkClient) : BaseViewModel(application = Application()) {
+class ProductsListViewModel(private val repo: INetworkClient) :
+    BaseViewModel(application = Application()) {
 
-    private var _productsList = MutableLiveData<List<ProductsListBodyModel>>()
-    val productsList: LiveData<List<ProductsListBodyModel>>
-        get() = _productsList
+    var productsList: MutableLiveData<ArrayList<ProductsListBodyModel>>? = MutableLiveData()
 
-    private var itemPageCount = 1
+    private val INIT_PAGE = 1
+
+    private var itemPageCount = INIT_PAGE
 
     var productsListAdapter = ProductsListAdapter()
 
-    var onProductsListRefreshListener = OnProductsListRefreshListener()
+    var onProductsListRefreshListener = OnProductsListRefreshListener(this)
 
-    var onProductsListScrollListener = OnProductsListScrollListener()
+    var onProductsListScrollListener = OnProductsListScrollListener(this)
 
-    fun requestProductsList() {
+    fun requestProductsList(type: RequestType) {
         addDisposable(repo.getProductsList(itemPageCount).with()
-            .doOnSubscribe { isLoading.value = true }
+            .doOnSubscribe {
+                when(type) {
+                    RequestType.REQUEST_MAIN_LIST_INIT -> {
+                        isLoading.value = true
+                    }
+                    RequestType.REQUEST_MAIN_LIST_LOAD_MORE -> {
+
+                    }
+                    RequestType.REQUEST_MAIN_LIST_REFRESH -> {
+
+                    }
+                }
+            }
             .doOnSuccess { isLoading.value = false }
             .doOnError { isLoading.value = false }
-            .subscribe({
-                _productsList.value = it.body
-                productsListAdapter.addItem(it.body)
+            .subscribe({ model ->
+                ResponseProductsList(this, model)
+                onProductsListRefreshListener.isRefresh.value = false
 
                 itemPageCount++
+
             }, {
                 isError.value = Pair(true, null)
                 ILog.e(it.message.toString())
+
             })
         )
+    }
+
+    fun initItemPage() {
+        itemPageCount = INIT_PAGE
+    }
+
+    fun requestRefreshProductsList() {
+        initItemPage()
+        productsListAdapter.clearItem()
+        requestProductsList(RequestType.REQUEST_MAIN_LIST_REFRESH)
     }
 }
