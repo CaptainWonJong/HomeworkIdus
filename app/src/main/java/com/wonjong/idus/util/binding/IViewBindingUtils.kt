@@ -19,3 +19,29 @@ fun View.setOnDebounceClickListener(listener: View.OnClickListener?) {
         setOnClickListener(OnDebounceClickListener(listener))
     }
 }
+
+@BindingAdapter("setViewHeightRatio")
+fun View.setViewHeightRatio(ratio: String) {
+    try {
+        val r = ratio.split(":")
+        if (r.size == 2) {
+            layoutParams.width = (r[0].toInt() * height) / r[1].toInt()
+        }
+
+    } catch (e: Exception) {
+
+    }
+}
+
+@BindingAdapter("setViewWidthRatio")
+fun View.setViewWidthRatio(ratio: String) {
+    try {
+        val r = ratio.split(":")
+        if (r.size == 2) {
+            layoutParams.height = (r[1].toInt() * width) / r[0].toInt()
+        }
+
+    } catch (e: Exception) {
+
+    }
+}

@@ -6,6 +6,8 @@ import com.wonjong.idus.base.BaseActivity
 import com.wonjong.idus.databinding.ActivityProductDetailBinding
 import com.wonjong.idus.util.ERORR_INTEGER_ID
 import com.wonjong.idus.util.INTENT_PRODUCT_DETAIL_ID
+import com.wonjong.idus.util.binding.setViewWidthRatio
+import kotlinx.android.synthetic.main.layout_scrollable_product_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -32,6 +34,7 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
             Toast.makeText(this, com.wonjong.idus.R.string.error_detail_id, Toast.LENGTH_LONG).show()
             finish()
         }
+        rv_thumbnail_product_detail.setViewWidthRatio("1:1")
     }
 
     override fun observeLiveData() {

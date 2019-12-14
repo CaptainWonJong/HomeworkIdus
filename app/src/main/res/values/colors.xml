@@ -9,6 +9,10 @@
 
     <color name="text_black">#141428</color>
     <color name="text_blue_grey">#ABABC4</color>
+    <color name="text_dark_sky_blue">#4A90E2</color>
+    <color name="text_cool_grey">#A3A3B5</color>
+
+    <color name="pale_grey">#F6F6FA</color>
 
     <color name="coral_pink_00">#FF586C</color>
     <color name="coral_pink_80">#CCFF586C</color>

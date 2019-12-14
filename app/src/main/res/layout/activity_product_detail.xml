@@ -15,16 +15,28 @@
         android:layout_height="match_parent"
         tools:context="com.wonjong.idus.ui.ProductDetailActivity">
 
+        <include
+            android:id="@+id/layout_scroll"
+            layout="@layout/layout_scrollable_product_detail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:model="@{model}" />
+
         <ImageView
+            android:id="@+id/iv_close"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="16dp"
-            android:scaleType="fitXY"
+            android:background="@drawable/selector_circle_grey"
             android:padding="8dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:scaleType="fitXY"
             android:src="@drawable/ic_close_white_24dp"
-            android:background="@drawable/selector_circle_grey"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_buy"

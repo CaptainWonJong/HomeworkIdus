@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.wonjong.idus.ui.ProductDetailViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="112dp">
+
+        <TextView
+            android:id="@+id/tv_seller"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/noto_black"
+            android:includeFontPadding="false"
+            android:text="@{model.seller}"
+            android:textColor="@color/text_dark_sky_blue"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="malfi 멀릭" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/sf_pro_black"
+            android:includeFontPadding="false"
+            android:text="@{model.title}"
+            android:textColor="@color/text_black"
+            android:textSize="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_seller"
+            tools:text="Triple \nHearthorn \nEarring" />
+
+        <TextView
+            android:id="@+id/tv_discount_rate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/sf_pro_black"
+            android:includeFontPadding="false"
+            android:text="@{model.discountRate}"
+            android:textColor="@color/coral_pink_00"
+            android:textSize="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            tools:text="10%" />
+
+        <TextView
+            android:id="@+id/tv_cost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/sf_pro_black"
+            android:includeFontPadding="false"
+            android:text="@{model.cost}"
+            android:textColor="@color/text_black"
+            android:textSize="20dp"
+            app:layout_constraintStart_toEndOf="@id/tv_discount_rate"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_goneMarginStart="0dp"
+            tools:text="111,200원" />
+
+        <TextView
+            android:id="@+id/tv_discount_cost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/apple_neo_eb"
+            android:includeFontPadding="false"
+            android:text="@{model.discountCost}"
+            android:textColor="@color/text_blue_grey"
+            android:textSize="20dp"
+            app:isStrikeThrough="@{true}"
+            app:layout_constraintStart_toEndOf="@id/tv_cost"
+            app:layout_constraintTop_toTopOf="@id/tv_cost"
+            app:layout_constraintBottom_toBottomOf="@id/tv_cost"
+            app:layout_goneMarginStart="0dp"
+            tools:text="111,200원" />
+
+        <View
+            android:id="@+id/v_line"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="88dp"
+            android:background="@color/text_blue_grey"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/noto_bold"
+            android:includeFontPadding="false"
+            android:text="@{model.description}"
+            android:textColor="@color/text_black"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/v_line"
+            tools:text="111,200원" />
+
+
+        <TextView
+            android:id="@+id/tv_tail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_pale_grey"
+            android:fontFamily="@font/noto_bold"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:paddingStart="18dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="26dp"
+            android:text="@{model.seller}"
+            android:textColor="@color/text_cool_grey"
+            android:textSize="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description"
+            tools:text="111,200원" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
