@@ -2,12 +2,14 @@ package com.wonjong.idus.ui
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.recyclerview.widget.PagerSnapHelper
 import com.wonjong.idus.base.BaseActivity
 import com.wonjong.idus.databinding.ActivityProductDetailBinding
+import com.wonjong.idus.ui.common.decoration.LinePagerIndicatorDecoration
 import com.wonjong.idus.util.ERORR_INTEGER_ID
 import com.wonjong.idus.util.INTENT_PRODUCT_DETAIL_ID
-import com.wonjong.idus.util.binding.setViewWidthRatio
-import kotlinx.android.synthetic.main.layout_scrollable_product_detail.*
+import kotlinx.android.synthetic.main.activity_product_detail.*
+import kotlinx.android.synthetic.main.layout_contents_product_detail_thumbnail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -34,7 +36,8 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
             Toast.makeText(this, com.wonjong.idus.R.string.error_detail_id, Toast.LENGTH_LONG).show()
             finish()
         }
-        rv_thumbnail_product_detail.setViewWidthRatio("1:1")
+
+        initViews()
     }
 
     override fun observeLiveData() {
@@ -42,4 +45,17 @@ class ProductDetailActivity : BaseActivity<ActivityProductDetailBinding, Product
     }
 
     override fun onCustomError(msg: String?) {  }
+
+    private fun initViews() {
+        val snapHelper = PagerSnapHelper()
+        snapHelper.attachToRecyclerView(rv_thumbnail_product_detail)
+
+        val deco = LinePagerIndicatorDecoration(this)
+        rv_thumbnail_product_detail.addItemDecoration(deco)
+
+        // 굳이 SingleLiveData 쓰지 말자 별거 없는데
+        iv_close.setOnClickListener {
+            finish()
+        }
+    }
 }

@@ -17,7 +17,7 @@
 
         <include
             android:id="@+id/layout_scroll"
-            layout="@layout/layout_scrollable_product_detail"
+            layout="@layout/layout_contents_product_detail_scrollable"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -7,7 +7,7 @@ import com.wonjong.idus.util.binding.setRoundCornerImageUri
 import com.wonjong.idus.util.bus.RxBus
 import com.wonjong.idus.util.enum.EventType
 import com.wonjong.idus.util.extension.dp
-import kotlinx.android.synthetic.main.holder_item_products.view.*
+import kotlinx.android.synthetic.main.holder_item_products_list.view.*
 
 /**
  * @author CaptainWonJong@gmail.com

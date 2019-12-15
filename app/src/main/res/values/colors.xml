@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="transparent">#00000000</color>
+    
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
@@ -13,6 +15,7 @@
     <color name="text_cool_grey">#A3A3B5</color>
 
     <color name="pale_grey">#F6F6FA</color>
+    <color name="dart_navy_blue">#00000A</color>
 
     <color name="coral_pink_00">#FF586C</color>
     <color name="coral_pink_80">#CCFF586C</color>

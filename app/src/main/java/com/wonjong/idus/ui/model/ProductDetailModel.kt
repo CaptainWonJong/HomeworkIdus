@@ -1,6 +1,8 @@
 package com.wonjong.idus.ui.model
 
 import com.google.gson.annotations.SerializedName
+import com.wonjong.idus.base.holder.IHolderType
+import com.wonjong.idus.base.holder.IViewHolderModel
 import com.wonjong.idus.ui.model.base.BaseModel
 
 /**
@@ -11,10 +13,10 @@ data class ProductDetailModel(
     override val statusCode: Int,
 
     @SerializedName("body")
-    val body: ArrayList<DetailBody>? = arrayListOf()
+    val body: ArrayList<ProductDetailBodyModel>? = arrayListOf()
 ) : BaseModel()
 
-data class DetailBody(
+data class ProductDetailBodyModel(
     @SerializedName("id")
     val id: Int,
 
@@ -42,3 +44,9 @@ data class DetailBody(
     @SerializedName("title")
     val title: String? = ""
 )
+
+data class ProductDetailImageListModel(
+    var imageUrl: String? = ""
+) : IViewHolderModel() {
+    override val viewType = IHolderType.ProductDetailType
+}

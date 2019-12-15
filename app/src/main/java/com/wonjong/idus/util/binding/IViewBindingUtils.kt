@@ -2,6 +2,7 @@ package com.wonjong.idus.util.binding
 
 import android.view.View
 import androidx.databinding.BindingAdapter
+import com.ctwj.mysampleapp.util.ILog
 import com.wonjong.idus.util.listener.OnDebounceClickListener
 
 /**
@@ -29,7 +30,7 @@ fun View.setViewHeightRatio(ratio: String) {
         }
 
     } catch (e: Exception) {
-
+        ILog.e(e.toString())
     }
 }
 
@@ -42,6 +43,6 @@ fun View.setViewWidthRatio(ratio: String) {
         }
 
     } catch (e: Exception) {
-
+        ILog.e(e.toString())
     }
 }

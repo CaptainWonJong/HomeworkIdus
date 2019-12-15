@@ -51,7 +51,7 @@
                 app:addOnScrollListener="@{model.onProductsListScrollListener}"
                 app:setAdapter="@{model.productsListAdapter}"
                 app:spanCount="2"
-                tools:listitem="@layout/holder_item_products" />
+                tools:listitem="@layout/holder_item_products_list" />
         </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <ProgressBar

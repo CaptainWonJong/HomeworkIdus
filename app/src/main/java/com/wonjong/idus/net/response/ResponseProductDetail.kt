@@ -2,6 +2,7 @@ package com.wonjong.idus.net.response
 
 import com.wonjong.idus.net.response.base.BaseResponse
 import com.wonjong.idus.ui.ProductDetailViewModel
+import com.wonjong.idus.ui.model.ProductDetailImageListModel
 import com.wonjong.idus.ui.model.ProductDetailModel
 
 /**
@@ -19,6 +20,7 @@ class ResponseProductDetail(var viewModel: ProductDetailViewModel, model: Produc
 
     override fun onSuccess() : Unit = with(viewModel) {
         val data  = model.body
+
         data?.let {
             seller.value = it[DEFAULT_NUM].seller
             title.value = it[DEFAULT_NUM].title
@@ -26,7 +28,19 @@ class ResponseProductDetail(var viewModel: ProductDetailViewModel, model: Produc
             description.value = it[DEFAULT_NUM].description
             discountCost.value = it[DEFAULT_NUM].discount_cost
             discountRate.value = it[DEFAULT_NUM].discount_rate
+
+            val list = it[DEFAULT_NUM].thumbnail_list_320?.split("#")
+            list?.let { imageList ->
+                imageList.forEach { url ->
+                    val model = ProductDetailImageListModel()
+                    model.imageUrl = url
+                    imageUrlList.add(model)
+                }
+
+            }
         }
+
+        productDetailAdapter.addItem(imageUrlList)
     }
 
     override fun onFail() {

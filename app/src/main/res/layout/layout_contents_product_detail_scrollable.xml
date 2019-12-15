@@ -19,15 +19,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rv_thumbnail_product_detail"
+            <include
+                android:id="@+id/layout_contents_product_detail_thumbnail"
+                layout="@layout/layout_contents_product_detail_thumbnail"
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@color/black_00"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/holder_item_products" />
+                android:layout_height="wrap_content"
+                app:model="@{model}" />
 
             <include
                 android:id="@+id/layout_contents_product_detail"

@@ -6,7 +6,9 @@ import com.ctwj.mysampleapp.util.ILog
 import com.wonjong.idus.base.BaseViewModel
 import com.wonjong.idus.net.INetworkClient
 import com.wonjong.idus.net.response.ResponseProductDetail
-import com.wonjong.idus.ui.model.DetailBody
+import com.wonjong.idus.ui.adapter.ProductDetailAdapter
+import com.wonjong.idus.ui.model.ProductDetailBodyModel
+import com.wonjong.idus.ui.model.ProductDetailImageListModel
 import com.wonjong.idus.util.extension.with
 
 /**
@@ -14,7 +16,7 @@ import com.wonjong.idus.util.extension.with
  */
 class ProductDetailViewModel(private val repo: INetworkClient) : BaseViewModel(application = Application()) {
 
-    var data = MutableLiveData<ArrayList<DetailBody>>()
+    var data = MutableLiveData<ArrayList<ProductDetailBodyModel>>()
 
     var seller = MutableLiveData<String?>()
     var title = MutableLiveData<String?>()
@@ -22,6 +24,10 @@ class ProductDetailViewModel(private val repo: INetworkClient) : BaseViewModel(a
     var cost = MutableLiveData<String?>()
     var discountCost = MutableLiveData<String?>()
     var discountRate = MutableLiveData<String?>()
+
+    var imageUrlList = arrayListOf<ProductDetailImageListModel>()
+
+    var productDetailAdapter = ProductDetailAdapter()
 
     fun requestProductDetail(productId: Int) {
         addDisposable(repo.getProductDetail(productId).with()

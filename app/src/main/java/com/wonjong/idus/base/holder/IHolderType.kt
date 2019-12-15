@@ -10,5 +10,11 @@ import com.wonjong.idus.R
 enum class IHolderType(@LayoutRes val layoutRes: Int, val creator: (View) -> BaseViewHolder<*>) {
     // RecyclerView 타입은 여기에 정리
 
-    ProductsListType(R.layout.holder_item_products, {com.wonjong.idus.ui.adapter.ProductsListHolder(it)})
+    ProductsListType(
+        R.layout.holder_item_products_list,
+        { com.wonjong.idus.ui.adapter.ProductsListHolder(it) }),
+
+    ProductDetailType(
+        R.layout.holder_item_product_detail,
+        { com.wonjong.idus.ui.adapter.ProductDetailHolder(it) })
 }
