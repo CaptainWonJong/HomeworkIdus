@@ -5,6 +5,7 @@
 https://programmers.co.kr/competitions/125/2019-idus-blind-recruitment
 
 ~~제출해주신 과제가 정상적으로 실행되지 않아 -> LeakCanary 때문에 안됐다면 유감 :(~~
+
 apk 빌드할 때 ```aaptOptions.cruncherEnabled = false``` 설정을 넣어주면 안됩니다.
 
 https://appetize.io/ 에서 Gradle에 해당 속성이 들어가 있으면 실행이 안됩니다.
