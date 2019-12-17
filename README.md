@@ -4,4 +4,9 @@
 ### 탈락했으니까 public으로 전환합니다.
 https://programmers.co.kr/competitions/125/2019-idus-blind-recruitment
 
-제출해주신 과제가 정상적으로 실행되지 않아 -> LeakCanary 때문에 안됐다면 유감 :(
+~~제출해주신 과제가 정상적으로 실행되지 않아 -> LeakCanary 때문에 안됐다면 유감 :(~~
+apk 빌드할 때 ```aaptOptions.cruncherEnabled = false``` 설정을 넣어주면 안됩니다.
+
+https://appetize.io/ 에서 Gradle에 해당 속성이 들어가 있으면 실행이 안됩니다.
+
+그리고 LeakCanary 적용하면 https://appetize.io/ 에서 Canary부터 실행되니까 빼는게 좋습니다.
