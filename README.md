@@ -20,3 +20,4 @@ hotfix/1.0.1 (~ 19.12.29 수정 예정)
 release/1.1.0 (~20.01.10 수정 예정)
 
 - 만약 서버가 죽었다면 코루틴 공부는 [MySampleApp](https://github.com/CaptainWonJong/MySampleApp) 에서 진행 예정
+- 굳이 feature랑 develop은 귀찮으니까 안 할 예정
