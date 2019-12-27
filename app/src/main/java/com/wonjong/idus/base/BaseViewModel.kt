@@ -22,6 +22,7 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     val job = SupervisorJob()
     val handler = CoroutineExceptionHandler { _, e ->
+        isError.value = Pair(true, null)
         ILog.e(e.toString())
     }
 

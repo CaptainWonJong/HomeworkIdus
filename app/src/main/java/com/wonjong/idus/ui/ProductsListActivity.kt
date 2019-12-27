@@ -28,7 +28,8 @@ class ProductsListActivity : BaseActivity<ActivityProductsListBinding, ProductsL
 
         receiveRxBus()
 
-        viewModel.requestProductsList(RequestType.REQUEST_MAIN_LIST_INIT)
+        //viewModel.requestProductsList(RequestType.REQUEST_MAIN_LIST_INIT)
+        viewModel.requestProductsListToCoroutine(RequestType.REQUEST_MAIN_LIST_INIT)
     }
 
     override fun observeLiveData() {

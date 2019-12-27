@@ -21,7 +21,7 @@ class OnProductsListScrollListener(var viewModel: BaseViewModel) : RecyclerView.
         if (lastVisible >= totalItemCount - 1) {
             when(viewModel) {
                 is ProductsListViewModel -> {
-                    (viewModel as ProductsListViewModel).requestProductsList(RequestType.REQUEST_MAIN_LIST_LOAD_MORE)
+                    (viewModel as ProductsListViewModel).requestProductsListToCoroutine(RequestType.REQUEST_MAIN_LIST_LOAD_MORE)
                 }
             }
         }

@@ -2,6 +2,7 @@ package com.wonjong.idus.ui
 
 import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.ctwj.mysampleapp.util.ILog
 import com.wonjong.idus.base.BaseViewModel
 import com.wonjong.idus.net.INetworkClient
@@ -10,21 +11,17 @@ import com.wonjong.idus.ui.adapter.ProductsListAdapter
 import com.wonjong.idus.ui.listener.OnProductsListRefreshListener
 import com.wonjong.idus.ui.listener.OnProductsListScrollListener
 import com.wonjong.idus.ui.model.ProductsListBodyModel
+import com.wonjong.idus.ui.model.ProductsListModel
 import com.wonjong.idus.util.enum.RequestType
 import com.wonjong.idus.util.extension.with
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
 
 /**
  * @author CaptainWonJong@gmail.com
  */
 class ProductsListViewModel(private val repo: INetworkClient) :
-    BaseViewModel(application = Application()), CoroutineScope {
-
-    override val coroutineContext: CoroutineContext
-        get() = Dispatchers.IO + job + handler
+    BaseViewModel(application = Application()) {
 
     var productsList: MutableLiveData<ArrayList<ProductsListBodyModel>>? = MutableLiveData()
 
@@ -39,8 +36,26 @@ class ProductsListViewModel(private val repo: INetworkClient) :
     var onProductsListScrollListener = OnProductsListScrollListener(this)
 
     fun requestProductsListToCoroutine(type: RequestType) {
-        CoroutineScope(coroutineContext).launch {
-            productsList?.value = repo.getProductsListToCoroutine(itemPageCount).await().body
+        viewModelScope.launch(Dispatchers.Main) {
+
+            when (type) {
+                RequestType.REQUEST_MAIN_LIST_INIT -> {
+                    isLoading.value = true
+                }
+                RequestType.REQUEST_MAIN_LIST_LOAD_MORE -> {
+                }
+                RequestType.REQUEST_MAIN_LIST_REFRESH -> {
+                }
+            }
+
+            var data = ProductsListModel(0)
+            viewModelScope.launch(Dispatchers.IO + job + handler) {
+                data = repo.getProductsListToCoroutine(itemPageCount).await()
+            }
+
+            ResponseProductsList(this@ProductsListViewModel, data)
+            onProductsListRefreshListener.isRefresh.value = false
+            itemPageCount++
         }
     }
 
@@ -82,6 +97,6 @@ class ProductsListViewModel(private val repo: INetworkClient) :
     fun requestRefreshProductsList() {
         initItemPage()
         productsListAdapter.clearItem()
-        requestProductsList(RequestType.REQUEST_MAIN_LIST_REFRESH)
+        requestProductsListToCoroutine(RequestType.REQUEST_MAIN_LIST_REFRESH)
     }
 }
