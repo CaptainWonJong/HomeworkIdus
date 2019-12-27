@@ -3,8 +3,11 @@ package com.wonjong.idus.base
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.ctwj.mysampleapp.util.ILog
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.SupervisorJob
 
 /**
  * @author CaptainWonJong@gmail.com
@@ -16,6 +19,11 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
     var isLoading = MutableLiveData<Boolean>()
 
     var isError = MutableLiveData<Pair<Boolean, String?>>(Pair(false, null))
+
+    val job = SupervisorJob()
+    val handler = CoroutineExceptionHandler { _, e ->
+        ILog.e(e.toString())
+    }
 
     fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)
@@ -32,5 +40,9 @@ open class BaseViewModel(application: Application) : AndroidViewModel(applicatio
 
     fun clearDisposables() {
         compositeDisposable.clear()
+    }
+
+    fun clearJob() {
+        job.cancel()
     }
 }

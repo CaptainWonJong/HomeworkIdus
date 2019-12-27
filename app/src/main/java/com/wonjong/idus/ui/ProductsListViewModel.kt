@@ -12,12 +12,19 @@ import com.wonjong.idus.ui.listener.OnProductsListScrollListener
 import com.wonjong.idus.ui.model.ProductsListBodyModel
 import com.wonjong.idus.util.enum.RequestType
 import com.wonjong.idus.util.extension.with
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 /**
  * @author CaptainWonJong@gmail.com
  */
 class ProductsListViewModel(private val repo: INetworkClient) :
-    BaseViewModel(application = Application()) {
+    BaseViewModel(application = Application()), CoroutineScope {
+
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO + job + handler
 
     var productsList: MutableLiveData<ArrayList<ProductsListBodyModel>>? = MutableLiveData()
 
@@ -31,10 +38,16 @@ class ProductsListViewModel(private val repo: INetworkClient) :
 
     var onProductsListScrollListener = OnProductsListScrollListener(this)
 
+    fun requestProductsListToCoroutine(type: RequestType) {
+        CoroutineScope(coroutineContext).launch {
+            productsList?.value = repo.getProductsListToCoroutine(itemPageCount).await().body
+        }
+    }
+
     fun requestProductsList(type: RequestType) {
         addDisposable(repo.getProductsList(itemPageCount).with()
             .doOnSubscribe {
-                when(type) {
+                when (type) {
                     RequestType.REQUEST_MAIN_LIST_INIT -> {
                         isLoading.value = true
                     }
