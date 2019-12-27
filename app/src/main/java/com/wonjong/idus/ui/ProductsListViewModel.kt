@@ -14,7 +14,9 @@ import com.wonjong.idus.ui.model.ProductsListBodyModel
 import com.wonjong.idus.ui.model.ProductsListModel
 import com.wonjong.idus.util.enum.RequestType
 import com.wonjong.idus.util.extension.with
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
 
 /**
@@ -34,6 +36,9 @@ class ProductsListViewModel(private val repo: INetworkClient) :
     var onProductsListRefreshListener = OnProductsListRefreshListener(this)
 
     var onProductsListScrollListener = OnProductsListScrollListener(this)
+
+    private val job = SupervisorJob()
+    private val handler = CoroutineExceptionHandler { _, e -> ILog.e(e.toString()) }
 
     fun requestProductsListToCoroutine(type: RequestType) {
         viewModelScope.launch(Dispatchers.Main) {
